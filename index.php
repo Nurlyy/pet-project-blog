@@ -8,7 +8,7 @@ if(!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$stmt = $pdo->query("SELECT p.id, p.title, p.content, p.created_at, u.username FROM posts p JOIN users u ON p.user_id = u.id ORDER BY p.created_at DESC");
+$stmt = $pdo->query("SELECT p.id, p.title, p.context, p.created_at, u.username FROM posts p JOIN users u ON p.user_id = u.id ORDER BY p.created_at DESC");
 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -26,7 +26,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($posts as $post): ?>
             <li>
                 <h2><?php echo htmlspecialchars($post['title']); ?></h2>
-                <p><?php echo htmlspecialchars($post['content']); ?></p>
+                <p><?php echo htmlspecialchars($post['context']); ?></p>
                 <small>Автор: <?php echo htmlspecialchars($post['username']); ?>, Дата: <?php echo htmlspecialchars($post['created_at']); ?></small>
                 <a href="edit_post.php?id=<?php echo htmlspecialchars($post['id']); ?>">Редактировать</a>
                 <a href="delete_post.php?id=<?php echo htmlspecialchars($post['id']); ?>">Удалить</a>

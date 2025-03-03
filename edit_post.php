@@ -11,7 +11,7 @@ if(!isset($_SESSION['user_id'])) {
 $post_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $user_id =  $_SESSION['user_id'];
 
-if($_SEVER['REQUEST_METHOD'] == "POST") {
+if($_SERVER['REQUEST_METHOD'] == "POST") {
     $title = $_POST['title'];
     $context = $_POST['context'];
 
@@ -51,8 +51,8 @@ if(!$post) {
     <form method="post">
         <label for="title">Заголовок:</label>
         <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($post['title']); ?>" required><br>
-        <label for="content">Содержимое:</label>
-        <textarea id="content" name="content" required><?php echo htmlspecialchars($post['content']); ?></textarea><br>
+        <label for="context">Содержимое:</label>
+        <textarea id="context" name="context" required><?php echo htmlspecialchars($post['context']); ?></textarea><br>
         <button type="submit">Сохранить</button>
     </form>
     <a href="index.php">Назад</a>
